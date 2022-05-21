@@ -3,7 +3,7 @@ import React from 'react';
 const Tools = () => {
     return (
         <div>
-            <h1 className='text-5xl text-center font-bold'>This is tools part</h1>
+            <h1 className="text-center text-5xl">This is tools section</h1>
         </div>
     );
 };
