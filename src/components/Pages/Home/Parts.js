@@ -11,7 +11,7 @@ const Parts = () => {
     return (
         <div>
             <h1 className="text-center text-5xl">Refrigaretor Tools</h1>
-            <div className="grid grid-cols-3">
+            <div className="grid grid-cols-3 mx-3">
                 {
                     parts.map(part => <Part
                         part={part}
