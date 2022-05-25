@@ -55,33 +55,6 @@ const Purchase = () => {
             console.log(data);
         })
 
-        /*
-          const doctor = {
-                    name: data.name,
-                    email: data.email,
-                    specialty: data.specialty,
-                    img: img
-                }
-                // send to your database 
-                fetch('https://secret-dusk-46242.herokuapp.com/doctor', {
-                    method: 'POST',
-                    headers: {
-                        'content-type': 'application/json',
-                        authorization: `Bearer ${localStorage.getItem('accessToken')}`
-                    },
-                    body: JSON.stringify(doctor)
-                })
-                .then(res =>res.json())
-                .then(inserted =>{
-                    if(inserted.insertedId){
-                        toast.success('Doctor added successfully')
-                        reset();
-                    }
-                    else{
-                        toast.error('Failed to add the doctor');
-                    }
-                })
-        */
     }
     return (
         <div>
