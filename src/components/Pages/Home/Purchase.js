@@ -35,13 +35,53 @@ const Purchase = () => {
          console.log(quantityMessage.message);
     }
     const handleBuyNow = e=>{
-        e.preventDefault();
-        const name = e.target.name.value;
-        const email = user?.email;
-        const address = e.target.address.value;
-        const quantity = e.target.quantity.value;
+        e.preventDefault();  
+        const orders ={
+            name:  e.target.name.value,
+            email: user?.email,
+            address: e.target.address.value,
+            quantity: e.target.quantity.value
+        }
+        fetch('http://localhost:5000/orders',{
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify(orders)
+        })
+        .then(res => res.json())
+        .then(data =>{
+            alert('You order this parts successfully');
+            console.log(data);
+        })
 
-        console.log(name, email, address, quantity);
+        /*
+          const doctor = {
+                    name: data.name,
+                    email: data.email,
+                    specialty: data.specialty,
+                    img: img
+                }
+                // send to your database 
+                fetch('https://secret-dusk-46242.herokuapp.com/doctor', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json',
+                        authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                    },
+                    body: JSON.stringify(doctor)
+                })
+                .then(res =>res.json())
+                .then(inserted =>{
+                    if(inserted.insertedId){
+                        toast.success('Doctor added successfully')
+                        reset();
+                    }
+                    else{
+                        toast.error('Failed to add the doctor');
+                    }
+                })
+        */
     }
     return (
         <div>
