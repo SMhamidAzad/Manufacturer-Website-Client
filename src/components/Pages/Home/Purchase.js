@@ -54,7 +54,6 @@ const Purchase = () => {
             alert('You order this parts successfully');
             console.log(data);
         })
-
     }
     return (
         <div>
