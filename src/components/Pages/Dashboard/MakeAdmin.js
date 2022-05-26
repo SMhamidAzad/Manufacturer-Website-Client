@@ -3,7 +3,7 @@ import { useQuery } from 'react-query';
 import MakeAdminRow from './MakeAdminRow';
 
 const MakeAdmin = () => {
-  const { data: users, isLoading } = useQuery('users', () => fetch('http://localhost:5000/user').then(res => res.json()))
+  const { data: users, isLoading, refetch } = useQuery('users', () => fetch('http://localhost:5000/user').then(res => res.json()))
   if (isLoading) {
     return <p>Loading....</p>
   }
@@ -15,8 +15,8 @@ const MakeAdmin = () => {
           <thead>
             <tr>
               <th></th>
-              <th>Name</th>
               <th>Email</th>
+              <th>Make Admin</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -26,6 +26,7 @@ const MakeAdmin = () => {
               key={user._id}
               index={index}
               user={user}
+              refetch={refetch}
               ></MakeAdminRow>)
             }
           </tbody>
@@ -36,5 +37,6 @@ const MakeAdmin = () => {
 };
 
 export default MakeAdmin;
+
 
 

@@ -15,6 +15,11 @@ import Portfolio from './components/Pages/Portfolio/Portfolio';
 import Footer from './components/Shared/Footer';
 import Header from './components/Shared/Header';
 import NotFound from './components/Shared/NotFound';
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
+import AddProduct from './components/Pages/Dashboard/AddProduct';
+import ManageProducts from './components/Pages/Dashboard/ManageProducts';
+import ManageOrders from './components/Pages/Dashboard/ManageOrders';
 
 function App() {
   return (
@@ -36,6 +41,9 @@ function App() {
          <Route path='review' element={<AddReview></AddReview>}></Route>
          <Route path='profile' element={<MyProfile></MyProfile>}></Route>
          <Route path='adminMake' element={<MakeAdmin></MakeAdmin>}></Route>
+         <Route path='addProduct' element={<AddProduct></AddProduct>}></Route>
+         <Route path='manageProduct' element={<ManageProducts></ManageProducts>}></Route>
+         <Route path='manageOrder' element={<ManageOrders></ManageOrders>}></Route>
        </Route>
        <Route path='/portfolio' element={<Portfolio></Portfolio>}></Route>
        <Route path='/blogs' element={<Blogs></Blogs>}></Route>
@@ -44,6 +52,7 @@ function App() {
        <Route path='*' element={<NotFound></NotFound>}></Route>
      </Routes>
      <Footer></Footer>
+     <ToastContainer/>
     </div>
   );
 }
