@@ -3,6 +3,7 @@ import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import useToken from '../../../hooks/useToken';
+import SocialLogin from './SocialLogin';
 
 const Login = () => {
     const [
@@ -54,9 +55,9 @@ const Login = () => {
         const email = userData.email;
         signInWithEmailAndPassword(userData.email, userData.password)
         console.log(email);
-       
+
     }
-    
+
 
     const navigate = useNavigate();
     const location = useLocation()
@@ -65,7 +66,7 @@ const Login = () => {
         if (token) {
             navigate(from, { replace: true });
         }
-    }, [token,from,navigate])
+    }, [token, from, navigate])
     useEffect(() => {
         if (error) {
             console.log(error.message);
@@ -79,28 +80,30 @@ const Login = () => {
     }, [])
     return (
         <div className='flex justify-center'>
-          <div className=''>
-              <div className='flex'>
-                  <h2 className=''>Login</h2>
-                  <div className='login-line'></div>
-              </div>
-              <form onSubmit={handleSubmitLogin}>
-                  <input className='input input-bordered' onChange={handleEmailField} type="email" name="email" id="" placeholder='Email' />
-                  <br />
-                  {errors?.emailError && <p className='text-danger'>❌ {errors.emailError}</p>}
-                  <br />
-                  <input className='input input-bordered' onChange={handlePasswordField} type="password" name="password" id="" placeholder='Password' />
-                  <br />
-                  {errors?.passwordError && <p className='text-danger'>❌{errors.passwordError}</p>}
-                  <br />
-                  <div className='d-flex justify-content-between mt-6'>
-                      <input className='btn btn-md w-full' type="submit" value="Login" />
-                  </div>
-                  <p>New in our website? <Link to='/signup'>Sign up</Link></p>
-              </form>
-          </div>
-         
-      </div>
+            <div className='w-1/4 mb-5'>
+                <div className='flex'>
+                    <h2 className='text-2xl font-semibold my-5'>Login</h2>
+                    <div className='login-line'></div>
+                </div>
+                <form onSubmit={handleSubmitLogin}>
+                    <input className='input input-bordered w-full' onChange={handleEmailField} type="email" name="email" id="" placeholder='Email' />
+                    <br />
+                    {errors?.emailError && <p className='text-danger'>❌ {errors.emailError}</p>}
+                    <br />
+                    <input className='input input-bordered w-full' onChange={handlePasswordField} type="password" name="password" id="" placeholder='Password' />
+                    <br />
+                    {errors?.passwordError && <p className='text-danger'>❌{errors.passwordError}</p>}
+                    <br />
+                    <div className='d-flex justify-content-between mt-6'>
+                        <input className='btn btn-md w-full' type="submit" value="Login" />
+                    </div>
+                    <p>New in our website? <Link className='btn-link' to='/signup'>Sign up</Link></p>
+                </form>
+                <div class="divider">OR</div>
+                <SocialLogin></SocialLogin>
+            </div>
+
+        </div>
     );
 };
 

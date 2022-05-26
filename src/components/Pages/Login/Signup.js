@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import useToken from '../../../hooks/useToken';
+import SocialLogin from './SocialLogin';
 
 const Signup = () => {
   const [
@@ -93,34 +94,32 @@ const Signup = () => {
   return (
 
       <div className='flex justify-center'>
-          <div className=''>
+          <div className='w-1/4 mb-5'>
               <div className='flex'>
-                  <h2 className=''>Signup</h2>
-                  <div className='login-line'></div>
+                  <h2 className='text-2xl font-semibold my-5'>Signup</h2>
               </div>
               <form onSubmit={handleSubmitSignUp}>
-                  <input className='input input-bordered' onChange={handleEmailField} type="email" name="email" id="" placeholder='Email' />
+                  <input className='input input-bordered w-full' onChange={handleEmailField} type="email" name="email" id="" placeholder='Email' />
                   <br />
                   {errors?.emailError && <p className='text-danger'>❌ {errors.emailError}</p>}
                   <br />
-                  <input className='input input-bordered' onChange={handlePasswordField} type="password" name="password" id="" placeholder='Password' />
+                  <input className='input input-bordered w-full' onChange={handlePasswordField} type="password" name="password" id="" placeholder='Password' />
                   <br />
                   {errors?.passwordError && <p className='text-danger'>❌{errors.passwordError}</p>}
                   <br />
-                  <input className='input input-bordered' onChange={handleConfirmPasswordField} type="password" name="confirmPassword" id="" placeholder='confirm password' />
+                  <input className='input input-bordered w-full' onChange={handleConfirmPasswordField} type="password" name="confirmPassword" id="" placeholder='confirm password' />
                   <br />
                   <div className='d-flex justify-content-between mt-6'>
                       <input className='btn btn-md w-full' type="submit" value="Signup" />
                   </div>
+                  <p>Already have an account? <Link className='btn-link' to='/login'>Login</Link></p>
               </form>
               <div className='d-flex justify-content-center mt-3'>
                   <div className='line'>
 
                   </div>
-                  <p style={{ marginTop: '-12px' }} className='mx-3 fw-bold'>Or</p>
-                  <div className='line'>
-
-                  </div>
+                  <div class="divider">OR</div>
+                   <SocialLogin></SocialLogin>
               </div>
           </div>
          
