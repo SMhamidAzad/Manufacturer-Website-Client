@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
+import useToken from '../../../hooks/useToken';
 
 const Login = () => {
     const [
@@ -20,6 +21,7 @@ const Login = () => {
         passwordError: ""
     })
 
+    const [token] = useToken(user)
     // get email field and validation 
     const handleEmailField = e => {
         const emailInput = e.target.value;
@@ -60,10 +62,10 @@ const Login = () => {
     const location = useLocation()
     let from = location.state?.from?.pathname || "/";
     useEffect(() => {
-        if (user) {
+        if (token) {
             navigate(from, { replace: true });
         }
-    }, [user])
+    }, [token,from,navigate])
     useEffect(() => {
         if (error) {
             console.log(error.message);
@@ -94,6 +96,7 @@ const Login = () => {
                   <div className='d-flex justify-content-between mt-6'>
                       <input className='btn btn-md w-full' type="submit" value="Login" />
                   </div>
+                  <p>New in our website? <Link to='/signup'>Sign up</Link></p>
               </form>
           </div>
          

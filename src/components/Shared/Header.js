@@ -7,6 +7,11 @@ import auth from '../../firebase.init';
 const Header = () => {
     const [user, loading, error] = useAuthState(auth);
 
+    const userLogout = ()=>{
+        signOut(auth);
+        localStorage.removeItem('accessToken')
+    }
+
     const menuItems = <>
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/blogs'>Blogs</Link></li>
@@ -16,7 +21,7 @@ const Header = () => {
         }
         {
             user ?
-                <li><a onClick={() => signOut(auth)}>Logout</a></li>
+                <li><a onClick={userLogout}>Logout</a></li>
                 :
                 <li><Link to='/login'>Login</Link></li>
         }

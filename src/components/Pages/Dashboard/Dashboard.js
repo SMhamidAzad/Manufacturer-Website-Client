@@ -15,7 +15,8 @@ const Dashboard = () => {
                 <ul class="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
                     <li><Link to='/dashboard'>My Orders</Link></li>
                     <li><Link to='/dashboard/review'>Add a Review</Link></li>
-                    <label for="my-modal-3" class="btn modal-button">My Profile</label>
+                    <li><Link to='/dashboard/profile'>My Profile</Link></li>
+                    <li><Link to='/dashboard/adminMake'>Make Admin</Link></li>
                 </ul>
 
             </div>
