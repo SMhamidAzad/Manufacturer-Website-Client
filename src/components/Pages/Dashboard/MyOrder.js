@@ -8,7 +8,7 @@ const MyOrder = () => {
     const [user] = useAuthState(auth);
     const [myOrders, setMyOrders] = useState([])
     const email = user.email;
-    const url = `http://localhost:5000/orders?email=${email}`;
+    const url = `https://mighty-earth-01337.herokuapp.com/orders?email=${email}`;
     useEffect(() => {
         const getMyItems = async () => {
             const { data } = await axios.get(url, {

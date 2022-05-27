@@ -8,7 +8,7 @@ const MyProfile = () => {
   const [profile, setProfie] = useState([])
 
   const email = user?.email;
-  const url = `http://localhost:5000/profile?email=${email}`;
+  const url = `https://mighty-earth-01337.herokuapp.com/profile?email=${email}`;
   useEffect(() => {
     const getMyItems = async () => {
       const { data } = await axios.get(url, {
@@ -29,7 +29,7 @@ const MyProfile = () => {
     }
     console.log(profile);
 
-    fetch('http://localhost:5000/profile', {
+    fetch('https://mighty-earth-01337.herokuapp.com/profile', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',

@@ -11,7 +11,7 @@ const AddProduct = () => {
             available_quantity: e.target.available_quantity.value,
             price: e.target.price.value,
         }
-        fetch('http://localhost:5000/tools', {
+        fetch('https://mighty-earth-01337.herokuapp.com/tools', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

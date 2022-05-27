@@ -15,7 +15,7 @@ const Purchase = () => {
     const [user, loading, error] = useAuthState(auth);
     // console.log(quantity);
     useEffect(() => {
-        fetch(`http://localhost:5000/tools/${id}`)
+        fetch(`https://mighty-earth-01337.herokuapp.com/tools/${id}`)
             .then(res => res.json())
             .then(data => setTool(data))
     }, [])
@@ -48,7 +48,7 @@ const Purchase = () => {
             product: tool.name,
             quantity: e.target.quantity.value
         }
-        fetch('http://localhost:5000/orders', {
+        fetch('https://mighty-earth-01337.herokuapp.com/orders', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

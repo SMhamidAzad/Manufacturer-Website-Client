@@ -3,7 +3,7 @@ import { useQuery } from 'react-query';
 import MakeAdminRow from './MakeAdminRow';
 
 const MakeAdmin = () => {
-  const { data: users, isLoading, refetch } = useQuery('users', () => fetch('http://localhost:5000/user').then(res => res.json()))
+  const { data: users, isLoading, refetch } = useQuery('users', () => fetch('https://mighty-earth-01337.herokuapp.com/user').then(res => res.json()))
   if (isLoading) {
     return <p>Loading....</p>
   }

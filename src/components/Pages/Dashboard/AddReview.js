@@ -11,7 +11,7 @@ const AddReview = () => {
             description: e.target.description.value,
             rating: e.target.rating.value
         }
-        fetch('http://localhost:5000/review', {
+        fetch('https://mighty-earth-01337.herokuapp.com/review', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
