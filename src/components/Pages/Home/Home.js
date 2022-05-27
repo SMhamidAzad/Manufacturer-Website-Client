@@ -5,6 +5,7 @@ import BusinessSummary from './BusinessSummary';
 import Reviews from './Reviews';
 import Parts from './Parts';
 import Contact from './Contact';
+import BestCollection from './BestCollection';
 
 
 const Home = () => {
@@ -13,6 +14,7 @@ const Home = () => {
          <Banner></Banner>
          <Parts></Parts>
          <BusinessSummary></BusinessSummary>
+         <BestCollection></BestCollection>
          <Reviews></Reviews>
          <Contact></Contact>
        </div>

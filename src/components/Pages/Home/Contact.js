@@ -6,7 +6,7 @@ import { GoLocation } from 'react-icons/go';
 
 const Contact = () => {
     return (
-        <div class="hero bg-base-200">
+        <div class="hero bg-base-200 my-5">
             <div class="hero-content flex-col lg:flex-row ">
                 <img style={{width: '300px'}} src={office} />
                 <div className='lg:ml-20'>
