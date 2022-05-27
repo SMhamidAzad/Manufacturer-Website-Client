@@ -76,56 +76,56 @@ const Signup = () => {
     }, [])
     useEffect(() => {
         if (error) {
-            toast.error(error.message,{
+            toast.error(error.message, {
                 position: 'top-center'
             })
         }
     }, [error])
 
-        // create user 
-        const handleSubmitSignUp = e => {
-            e.preventDefault();
-            const name = e.target.name.value;
-            createUserWithEmailAndPassword(userData.email, userData.password);
-            updateProfile({ displayName: name })
-        }
-       
-        return (
+    // create user 
+    const handleSubmitSignUp = e => {
+        e.preventDefault();
+        const name = e.target.name.value;
+        createUserWithEmailAndPassword(userData.email, userData.password);
+        updateProfile({ displayName: name })
+    }
 
-            <div className='flex justify-center'>
-                <div className='w-1/4 mb-5'>
-                    <div className='flex'>
-                        <h2 className='text-2xl font-semibold my-5'>Signup</h2>
-                    </div>
-                    <form onSubmit={handleSubmitSignUp}>
-                        <input className='input input-bordered w-full' type="text" name="name" id="" placeholder='Name' required />
-                        <br /><br />
-                        <input className='input input-bordered w-full' onChange={handleEmailField} type="email" name="email" id="" placeholder='Email' required />
-                        <br />
-                        {errors?.emailError && <p className='text-danger'>❌ {errors.emailError}</p>}
-                        <br />
-                        <input className='input input-bordered w-full' onChange={handlePasswordField} type="password" name="password" id="" placeholder='Password' required />
-                        <br />
-                        {errors?.passwordError && <p className='text-danger'>❌{errors.passwordError}</p>}
-                        <br />
-                        <input className='input input-bordered w-full' onChange={handleConfirmPasswordField} type="password" name="confirmPassword" id="" placeholder='confirm password' required />
-                        <br />
-                        <div className='d-flex justify-content-between mt-6'>
-                            <input className='btn btn-md w-full' type="submit" value="Signup" />
-                        </div>
-                        <p>Already have an account? <Link className='btn-link' to='/login'>Login</Link></p>
-                    </form>
-                    <div className='d-flex justify-content-center mt-3'>
-                        <div className='line'>
+    return (
 
-                        </div>
-                        <div class="divider">OR</div>
-                        <SocialLogin></SocialLogin>
-                    </div>
+        <div className='flex justify-center'>
+            <div className='w-1/4 mb-5'>
+                <div className='flex'>
+                    <h2 className='text-2xl font-semibold my-5'>Signup</h2>
                 </div>
-                <ToastContainer />
-            </div>
-        );
-    };
+                <form onSubmit={handleSubmitSignUp}>
+                    <input className='input input-bordered w-full' type="text" name="name" id="" placeholder='Name' required />
+                    <br /><br />
+                    <input className='input input-bordered w-full' onChange={handleEmailField} type="email" name="email" id="" placeholder='Email' required />
+                    <br />
+                    {errors?.emailError && <p className='text-danger'>❌ {errors.emailError}</p>}
+                    <br />
+                    <input className='input input-bordered w-full' onChange={handlePasswordField} type="password" name="password" id="" placeholder='Password' required />
+                    <br />
+                    {errors?.passwordError && <p className='text-danger'>❌{errors.passwordError}</p>}
+                    <br />
+                    <input className='input input-bordered w-full' onChange={handleConfirmPasswordField} type="password" name="confirmPassword" id="" placeholder='confirm password' required />
+                    <br />
+                    <div className='d-flex justify-content-between mt-6'>
+                        <input className='btn btn-md w-full' type="submit" value="Signup" />
+                    </div>
+                    <p>Already have an account? <Link className='btn-link' to='/login'>Login</Link></p>
+                </form>
+                <div className='d-flex justify-content-center mt-3'>
+                    <div className='line'>
 
-    export default Signup;
+                    </div>
+                    <div className="divider">OR</div>
+                    <SocialLogin></SocialLogin>
+                </div>
+            </div>
+            <ToastContainer />
+        </div>
+    );
+};
+
+export default Signup;

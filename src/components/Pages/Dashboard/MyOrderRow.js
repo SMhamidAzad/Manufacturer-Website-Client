@@ -1,7 +1,7 @@
 import React from 'react';
 
-const MyOrderRow = ({index,myOrder}) => {
-    const {product,email, phone, quantity, address} = myOrder
+const MyOrderRow = ({ index, myOrder }) => {
+    const { product, email, phone, quantity, address } = myOrder
     return (
         <tr>
             <th>{index + 1}</th>
@@ -10,7 +10,7 @@ const MyOrderRow = ({index,myOrder}) => {
             <td>{phone}</td>
             <td>{quantity}</td>
             <td>{address}</td>
-            <td><button class="btn btn-xs">Cancel</button></td>
+            <td><button className="btn btn-xs">Cancel</button></td>
         </tr>
     );
 };

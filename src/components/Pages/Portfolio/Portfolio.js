@@ -35,11 +35,11 @@ const Portfolio = () => {
                 <div className='mb-5'>
                     <h5 className='text-2xl font-medium'><u>Projects</u></h5>
                     <h6 className='text-xl font-medium'>Prime Door Pro.</h6>
-                    <a target='_blank' class="link link-accent" href='https://tiles-warehouse-management.web.app/'>Live Site Link</a>
+                    <a target='_blank' className="link link-accent" href='https://tiles-warehouse-management.web.app/'>Live Site Link</a>
                     <h6 className='text-xl font-medium'>Smart Root</h6>
-                    <a target='_blank' class="link link-accent" href='https://smart-root-architect.web.app/'>Live Site Link</a>
+                    <a target='_blank' className="link link-accent" href='https://smart-root-architect.web.app/'>Live Site Link</a>
                     <h6 className='text-xl font-medium'>Classic Watch</h6>
-                    <a target='_blank' class="link link-accent" href='https://classic-watch-analysis-sm-hamid.netlify.app/'>Live Site Link</a>
+                    <a target='_blank' className="link link-accent" href='https://classic-watch-analysis-sm-hamid.netlify.app/'>Live Site Link</a>
                 </div>
             </div>
         </div>

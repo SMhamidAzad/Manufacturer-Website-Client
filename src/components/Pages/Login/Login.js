@@ -68,7 +68,7 @@ const Login = () => {
     }, [token, from, navigate])
     useEffect(() => {
         if (error) {
-            toast.error(error.message,{
+            toast.error(error.message, {
                 position: 'top-center'
             })
         }
@@ -100,7 +100,7 @@ const Login = () => {
                     </div>
                     <p>New in our website? <Link className='btn-link' to='/signup'>Sign up</Link></p>
                 </form>
-                <div class="divider">OR</div>
+                <div className="divider">OR</div>
                 <SocialLogin></SocialLogin>
             </div>
             <ToastContainer />

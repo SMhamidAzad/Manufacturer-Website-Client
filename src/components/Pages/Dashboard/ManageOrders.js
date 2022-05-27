@@ -12,8 +12,8 @@ const ManageOrders = () => {
         <div>
             <h2 className='text-3xl font-medium'>This is manage orders page for all orders</h2>
             <h1>{orders.length}</h1>
-            <div class="overflow-x-auto">
-                <table class="table w-full">
+            <div className="overflow-x-auto">
+                <table className="table w-full">
                     <thead>
                         <tr>
                             <th></th>
@@ -25,10 +25,10 @@ const ManageOrders = () => {
                     </thead>
                     <tbody>
                         {
-                            orders.map((order,index) => <ManageOrdersRow
-                            key={order._id}
-                            index={index}
-                            order={order}
+                            orders.map((order, index) => <ManageOrdersRow
+                                key={order._id}
+                                index={index}
+                                order={order}
                             ></ManageOrdersRow>)
                         }
                     </tbody>

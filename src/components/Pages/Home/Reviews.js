@@ -22,24 +22,24 @@ const Reviews = () => {
     return (
         <div>
             <h1 className='text-center text-5xl my-10'>What Our Customer Says</h1>
-            <div class="mt-[-25px] mb-5 avatar-group -space-x-6 flex justify-center">
-                <div class="avatar">
-                    <div class="w-12">
+            <div className="mt-[-25px] mb-5 avatar-group -space-x-6 flex justify-center">
+                <div className="avatar">
+                    <div className="w-12">
                         <img src="https://api.lorem.space/image/face?hash=4818" />
                     </div>
                 </div>
-                <div class="avatar">
-                    <div class="w-12">
+                <div className="avatar">
+                    <div className="w-12">
                         <img src="https://api.lorem.space/image/face?hash=40311" />
                     </div>
                 </div>
-                <div class="avatar">
-                    <div class="w-12">
+                <div className="avatar">
+                    <div className="w-12">
                         <img src="https://api.lorem.space/image/face?hash=84348" />
                     </div>
                 </div>
-                <div class="avatar placeholder">
-                    <div class="w-12 bg-neutral-focus text-neutral-content">
+                <div className="avatar placeholder">
+                    <div className="w-12 bg-neutral-focus text-neutral-content">
                         <span>+99</span>
                     </div>
                 </div>
