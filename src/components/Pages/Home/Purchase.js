@@ -5,12 +5,15 @@ import auth from '../../../firebase.init';
 
 const Purchase = () => {
     const { id } = useParams();
-    const [tool, setTool] = useState([])
+    const [tool, setTool] = useState([]);
+    const [quantity,setQuantity]= useState(0);
+    const [disable, setDisable] = useState(true)
     // const 
     const [quantityMessage, setQuantityMessage] = useState({
         message: ""
     })
     const [user, loading, error] = useAuthState(auth);
+    console.log(quantity);
     useEffect(() => {
         fetch(`http://localhost:5000/tools/${id}`)
             .then(res => res.json())
@@ -23,6 +26,7 @@ const Purchase = () => {
     }, [user])
     const handleQuantityField = e =>{
          const inputQuantity = parseInt((e.target.value));
+         setQuantity(quantity)
          if(inputQuantity<tool.minimum_order_quantity){
             setQuantityMessage({...quantityMessage, message: "Quantity should be more than minimum quantity"})
          }
@@ -40,6 +44,8 @@ const Purchase = () => {
             name:  e.target.name.value,
             email: user?.email,
             address: e.target.address.value,
+            phone: e.target.phone.value,
+            product: tool.name,
             quantity: e.target.quantity.value
         }
         fetch('http://localhost:5000/orders',{
@@ -71,24 +77,30 @@ const Purchase = () => {
                 </div>
             </div>
             <div className='flex justify-center my-10'>
-                <div className=''>
+                <div className='w-1/4'>
                     <h3 className='text-2xl mb-4'>Purchase Now</h3>
                     <form onSubmit={handleBuyNow}>
-                        <input value={user?.email} className='input input-bordered' type="email" name="email" required readOnly disabled/>
+                        <input value={user?.email} className='input input-bordered w-full' type="email" name="email" required readOnly disabled/>
                         <br />
                         <br />
-                        <input value='user' className='input input-bordered' type="email" name="name" required readOnly disabled/>
+                        <input value={user?.displayName ? user.displayName : 'User'} className='input input-bordered w-full' type="email" name="name" required readOnly disabled/>
                         <br />
                         <br />
-                        <input className='input input-bordered' type="address" placeholder='Address' name="address" required/>
+                        <input className='input input-bordered w-full' type="address" placeholder='Address' name="address" required/>
+                        <br />
+                        <br />
+                        <input className='input input-bordered w-full' type="text" placeholder='Phone number' name="phone" required/>
+                        <br />
+                        <br />
+                        <input className='input input-bordered w-full' type="text" value={tool.name} name="product" required/>
                         <br />
                         <br />
                         <p>Maximum Quantity: {tool.available_quantity}</p>
-                        <input className='input input-bordered' type="number" onChange={handleQuantityField} placeholder={tool.minimum_order_quantity} name="quantity" required/>
+                        <input className='input input-bordered w-full' type="number" onChange={handleQuantityField} placeholder={tool.minimum_order_quantity} name="quantity" required/>
                         <br />
                         {quantityMessage?.message && <p>{quantityMessage.message}</p>}
                         <br />
-                        <input className='input input-bordered w-full btn-outline' type="submit" name="" value='Buy Now' required/>
+                        <input disabled={(quantity <tool.minimum_order_quantity || tool.available_quantity>quantity) && disable} className='input input-bordered w-full btn btn-outline' type="submit" name="" value='Buy Now' required/>
                     </form>
                 </div>
             </div>

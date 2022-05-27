@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
 import auth from '../../../firebase.init';
 import useToken from '../../../hooks/useToken';
 import SocialLogin from './SocialLogin';
@@ -54,8 +55,6 @@ const Login = () => {
         e.preventDefault();
         const email = userData.email;
         signInWithEmailAndPassword(userData.email, userData.password)
-        console.log(email);
-
     }
 
 
@@ -69,7 +68,9 @@ const Login = () => {
     }, [token, from, navigate])
     useEffect(() => {
         if (error) {
-            console.log(error.message);
+            toast.error(error.message,{
+                position: 'top-center'
+            })
         }
     }, [error])
 
@@ -93,7 +94,7 @@ const Login = () => {
                     <input className='input input-bordered w-full' onChange={handlePasswordField} type="password" name="password" id="" placeholder='Password' />
                     <br />
                     {errors?.passwordError && <p className='text-danger'>❌{errors.passwordError}</p>}
-                    <br />
+
                     <div className='d-flex justify-content-between mt-6'>
                         <input className='btn btn-md w-full' type="submit" value="Login" />
                     </div>
@@ -102,7 +103,7 @@ const Login = () => {
                 <div class="divider">OR</div>
                 <SocialLogin></SocialLogin>
             </div>
-
+            <ToastContainer />
         </div>
     );
 };

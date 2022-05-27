@@ -15,8 +15,7 @@ import Portfolio from './components/Pages/Portfolio/Portfolio';
 import Footer from './components/Shared/Footer';
 import Header from './components/Shared/Header';
 import NotFound from './components/Shared/NotFound';
-import { ToastContainer, toast } from 'react-toastify';
-  import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.css';
 import AddProduct from './components/Pages/Dashboard/AddProduct';
 import ManageProducts from './components/Pages/Dashboard/ManageProducts';
 import ManageOrders from './components/Pages/Dashboard/ManageOrders';
@@ -52,7 +51,6 @@ function App() {
        <Route path='*' element={<NotFound></NotFound>}></Route>
      </Routes>
      <Footer></Footer>
-     <ToastContainer/>
     </div>
   );
 }
