@@ -10,8 +10,8 @@ const Parts = () => {
     }, [])
     return (
         <div>
-            <h1 className="text-center text-5xl">Refrigaretor Tools</h1>
-            <div className="grid grid-cols-3 mx-3">
+            <h1 className="text-center text-5xl my-10">Our Collection</h1>
+            <div className="grid lg:grid-cols-3 sm:grid-cols-1 mx-3">
                 {
                     parts.map(part => <Part
                         part={part}

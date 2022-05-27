@@ -9,16 +9,16 @@ const Part = ({ part }) => {
         navigate(`/purchase/${id}`)
     }
     return (
-        <div class="card w-96 bg-base-100 shadow-xl">
-            <figure><img src={img} alt="Shoes" /></figure>
+        <div class="card w-96 h-[470px] bg-base-100 shadow-xl my-5">
+            <figure><img className='mb-[-40px]' style={{height: '200px'}} src={img} alt="Shoes" /></figure>
             <div class="card-body">
-                <h2 class="card-title">{name}</h2>
-                <p>{description}</p>
-                <p>{price}</p>
+                <h2  class="card-title">{name}</h2>
+                <p className=''>{description}</p>
+                <p className='text-4xl font-serif'>Price: {price}</p>
                 <h4 className='font-semibold'>Minimum Order Quantity: {minimum_order_quantity}</h4>
                 <h4 className='font-semibold'>Available Quantity: {available_quantity}</h4>
                 <div class="card-actions justify-end">
-                    <button onClick={()=>navigateToPurchase(_id)} class="btn btn-primary">Order Now</button>
+                    <button onClick={()=>navigateToPurchase(_id)} class="btn btn-primary btn-sm">Order Now</button>
                 </div>
             </div>
         </div>
