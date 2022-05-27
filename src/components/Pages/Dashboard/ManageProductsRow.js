@@ -15,7 +15,7 @@ const ManageProductsRow = ({ part, index }) => {
             <td>{name}</td>
             <td>{minimum_order_quantity}</td>
             <td>{available_quantity}</td>
-            <td>Delete</td>
+            <td><button class="btn btn-xs">Delete</button></td>
         </tr >
     );
 };

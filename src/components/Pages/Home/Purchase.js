@@ -6,14 +6,14 @@ import auth from '../../../firebase.init';
 const Purchase = () => {
     const { id } = useParams();
     const [tool, setTool] = useState([]);
-    const [quantity,setQuantity]= useState(0);
-    const [disable, setDisable] = useState(true)
+    // const [quantity,setQuantity]= useState(0);
+    // const [disable, setDisable] = useState(true)
     // const 
     const [quantityMessage, setQuantityMessage] = useState({
         message: ""
     })
     const [user, loading, error] = useAuthState(auth);
-    console.log(quantity);
+    // console.log(quantity);
     useEffect(() => {
         fetch(`http://localhost:5000/tools/${id}`)
             .then(res => res.json())
@@ -26,7 +26,7 @@ const Purchase = () => {
     }, [user])
     const handleQuantityField = e =>{
          const inputQuantity = parseInt((e.target.value));
-         setQuantity(quantity)
+        //  setQuantity(quantity)
          if(inputQuantity<tool.minimum_order_quantity){
             setQuantityMessage({...quantityMessage, message: "Quantity should be more than minimum quantity"})
          }
@@ -100,11 +100,12 @@ const Purchase = () => {
                         <br />
                         {quantityMessage?.message && <p>{quantityMessage.message}</p>}
                         <br />
-                        <input disabled={(quantity <tool.minimum_order_quantity || tool.available_quantity>quantity) && disable} className='input input-bordered w-full btn btn-outline' type="submit" name="" value='Buy Now' required/>
+                        <input className='input input-bordered w-full btn btn-outline' type="submit" name="" value='Buy Now' required/>
                     </form>
                 </div>
             </div>
         </div>
+        //  disabled={(quantity <tool.minimum_order_quantity || tool.available_quantity>quantity) && disable} 
     );
 };
 

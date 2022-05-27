@@ -8,7 +8,7 @@ const ManageOrdersRow = ({order,index}) => {
             <td>Cy Ganderton</td>
             <td>{quantity}</td>
             <td>{email}</td>
-            <td>Delete</td>
+            <td><button class="btn btn-xs">Delete</button></td>
         </tr>
     );
 };
