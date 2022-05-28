@@ -10,6 +10,7 @@ const ManageProducts = () => {
     }, [])
     return (
         <div>
+            <h2 className='text-2xl font-bold pt-3 pb-1'><u>All of Order Management:</u></h2>
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     <thead>

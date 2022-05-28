@@ -3,7 +3,7 @@ import React from 'react';
 const BestCollection = () => {
     return (
         <div>
-            <h1 className='text-center text-5xl my-10'>Upcomming Products</h1>
+            <h1 className='text-center text-5xl my-10'>Upcoming Products</h1>
             <div className="carousel w-full">
                 <div id="slide1" className="carousel-item relative w-full">
                     <img src="https://api.lorem.space/image/car?w=800&h=200&hash=8B7BCDC2" className="w-full" />

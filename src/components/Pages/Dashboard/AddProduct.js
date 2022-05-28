@@ -26,7 +26,7 @@ const AddProduct = () => {
     }
     return (
         <div>
-            <h2 className='text-2xl font-semibold'>Add a product here</h2>
+            <h2 className='text-2xl font-bold pt-3 pb-1'><u>Add a product here</u></h2>
             <form onSubmit={handleAddProduct}>
                 <input name='name' type="text" placeholder="Product Name" className="input input-bordered w-full max-w-xs input-primary" /><br /><br />
                 <input name='img' type="text" placeholder="Photo URL" className="input input-bordered w-full max-w-xs input-primary" /><br /><br />

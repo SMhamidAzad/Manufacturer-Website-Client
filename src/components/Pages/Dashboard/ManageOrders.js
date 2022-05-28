@@ -1,17 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import useManageOrder from '../../../hooks/useManageOrder';
 import ManageOrdersRow from './ManageOrdersRow';
 
 const ManageOrders = () => {
-    const [orders, setOrders] = useState([])
-    useEffect(() => {
-        fetch('https://mighty-earth-01337.herokuapp.com/orders')
-            .then(res => res.json())
-            .then(data => setOrders(data))
-    }, [])
+    const [orders] = useManageOrder()
+  
     return (
         <div>
-            <h2 className='text-3xl font-medium'>This is manage orders page for all orders</h2>
-            <h1>{orders.length}</h1>
+            <h2 className='text-2xl font-bold pt-3 pb-1'>All Order Management</h2>
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     <thead>
