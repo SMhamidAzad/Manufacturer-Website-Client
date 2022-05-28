@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useParams } from 'react-router-dom';
-import { toast } from 'react-toastify';
 import Swal from 'sweetalert2';
 import auth from '../../../firebase.init';
+import Loading from '../../Shared/Loading';
 
 const Purchase = () => {
     const { id } = useParams();
@@ -18,13 +18,19 @@ const Purchase = () => {
             .then(res => res.json())
             .then(data => setTool(data))
     }, [])
+   
     useEffect(() => {
         if (user) {
             console.log(user);
         }
     }, [user])
+    if(loading){
+        return <Loading></Loading>
+    }
+   
     const handleQuantityField = e => {
         const inputQuantity = parseInt((e.target.value));
+
         if (inputQuantity < tool.minimum_order_quantity) {
             setQuantityMessage({ ...quantityMessage, message: "Quantity should be more than minimum quantity" })
         }
@@ -104,12 +110,11 @@ const Purchase = () => {
                         <br />
                         {quantityMessage?.message && <p>{quantityMessage.message}</p>}
                         <br />
-                        <input className='input input-bordered w-full btn btn-primary' type="submit" name="" value='Buy Now' required />
+                        <input  className='input input-bordered w-full btn btn-primary' type="submit" name="" value='Buy Now' required />
                     </form>
                 </div>
             </div>
-        </div>
-        //  disabled={(quantity <tool.minimum_order_quantity || tool.available_quantity>quantity) && disable} 
+        </div> 
     );
 };
 
