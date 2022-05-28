@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import useParts from '../../../hooks/useParts';
 import Part from './Part';
 
 const Parts = () => {
-    const [parts, setParts] = useState([])
-    useEffect(() => {
-        fetch('https://mighty-earth-01337.herokuapp.com/tools')
-            .then(res => res.json())
-            .then(data => setParts(data))
-    }, [])
+    const [parts] = useParts();
+   
     return (
         <div>
             <h1 className="text-center text-5xl my-10">Our Collection</h1>
