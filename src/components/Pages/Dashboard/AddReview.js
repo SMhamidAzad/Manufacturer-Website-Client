@@ -28,11 +28,11 @@ const AddReview = () => {
         <div>
             <h2 className='text-2xl font-bold pt-3 pb-1'><u>Write something about us</u></h2>
             <form onSubmit={handleReview}>
-                <textarea name='description' className="textarea textarea-warning w-1/2" placeholder="Write your review here"></textarea><br />
+                <textarea name='description' className="textarea textarea-primary w-1/2" placeholder="Write your review here"></textarea><br />
                 <input name='rating' type="text" placeholder="Enter your rating here" className="input input-bordered input-primary w-full max-w-xs " />
                 <br />
                 <br />
-                <input className='btn' type="submit" value="Add Review" />
+                <input className='btn btn-primary' type="submit" value="Add Review" />
             </form>
         </div>
     );

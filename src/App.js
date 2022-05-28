@@ -19,6 +19,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import AddProduct from './components/Pages/Dashboard/AddProduct';
 import ManageProducts from './components/Pages/Dashboard/ManageProducts';
 import ManageOrders from './components/Pages/Dashboard/ManageOrders';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
   return (
@@ -51,6 +52,7 @@ function App() {
        <Route path='*' element={<NotFound></NotFound>}></Route>
      </Routes>
      <Footer></Footer>
+     <ToastContainer></ToastContainer>
     </div>
   );
 }

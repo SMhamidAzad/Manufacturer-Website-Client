@@ -1,11 +1,12 @@
 import React from 'react';
 import { useQuery } from 'react-query';
+import Loading from '../../Shared/Loading';
 import MakeAdminRow from './MakeAdminRow';
 
 const MakeAdmin = () => {
   const { data: users, isLoading, refetch } = useQuery('users', () => fetch('https://mighty-earth-01337.herokuapp.com/user').then(res => res.json()))
   if (isLoading) {
-    return <p>Loading....</p>
+    return <Loading></Loading>
   }
   return (
     <div>

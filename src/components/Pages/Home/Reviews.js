@@ -11,9 +11,6 @@ const Reviews = () => {
     useEffect(() => {
         const allReview = async () => {
             const { data } = await axios.get(url, {
-                // headers: {
-                //     authorization: `Bearer ${localStorage.getItem('accessToken')}`
-                // }
             })
             setReviews(data)
         }

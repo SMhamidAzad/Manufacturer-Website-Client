@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import auth from '../../../firebase.init';
 import useToken from '../../../hooks/useToken';
+import Loading from '../../Shared/Loading';
 import SocialLogin from './SocialLogin';
 
 const Login = () => {
@@ -76,7 +77,7 @@ const Login = () => {
 
     useEffect(() => {
         if (loading) {
-            return <p>Loading....</p>
+            return <Loading></Loading>
         }
     }, [])
     return (
@@ -96,7 +97,7 @@ const Login = () => {
                     {errors?.passwordError && <p className='text-danger'>❌{errors.passwordError}</p>}
 
                     <div className='d-flex justify-content-between mt-6'>
-                        <input className='btn btn-md w-full' type="submit" value="Login" />
+                        <input className='btn btn-primary btn-md w-full' type="submit" value="Login" />
                     </div>
                     <p>New in our website? <Link className='btn-link' to='/signup'>Sign up</Link></p>
                 </form>

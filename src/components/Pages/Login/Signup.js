@@ -5,6 +5,7 @@ import auth from '../../../firebase.init';
 import useToken from '../../../hooks/useToken';
 import SocialLogin from './SocialLogin';
 import { toast, ToastContainer } from 'react-toastify';
+import Loading from '../../Shared/Loading';
 
 const Signup = () => {
     const [
@@ -71,7 +72,7 @@ const Signup = () => {
 
     useEffect(() => {
         if (loading) {
-            return <p>Loading.....</p>
+            return <Loading></Loading>
         }
     }, [])
     useEffect(() => {
@@ -111,7 +112,7 @@ const Signup = () => {
                     <input className='input input-bordered w-full' onChange={handleConfirmPasswordField} type="password" name="confirmPassword" id="" placeholder='confirm password' required />
                     <br />
                     <div className='d-flex justify-content-between mt-6'>
-                        <input className='btn btn-md w-full' type="submit" value="Signup" />
+                        <input className='btn btn-md w-full btn-primary' type="submit" value="Signup" />
                     </div>
                     <p>Already have an account? <Link className='btn-link' to='/login'>Login</Link></p>
                 </form>

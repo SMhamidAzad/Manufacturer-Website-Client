@@ -1,19 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import auth from '../../../firebase.init';
 
 const Purchase = () => {
     const { id } = useParams();
     const [tool, setTool] = useState([]);
-    // const [quantity,setQuantity]= useState(0);
-    // const [disable, setDisable] = useState(true)
-    // const 
+    
     const [quantityMessage, setQuantityMessage] = useState({
         message: ""
     })
     const [user, loading, error] = useAuthState(auth);
-    // console.log(quantity);
     useEffect(() => {
         fetch(`https://mighty-earth-01337.herokuapp.com/tools/${id}`)
             .then(res => res.json())
@@ -26,7 +24,6 @@ const Purchase = () => {
     }, [user])
     const handleQuantityField = e => {
         const inputQuantity = parseInt((e.target.value));
-        //  setQuantity(quantity)
         if (inputQuantity < tool.minimum_order_quantity) {
             setQuantityMessage({ ...quantityMessage, message: "Quantity should be more than minimum quantity" })
         }
@@ -57,7 +54,9 @@ const Purchase = () => {
         })
             .then(res => res.json())
             .then(data => {
-                alert('You order this parts successfully');
+                toast.success("You order this item successfully",{
+                    position: 'top-center'
+                })
                 console.log(data);
             })
     }
@@ -70,8 +69,8 @@ const Purchase = () => {
                         <h2 className="card-title">{tool.name}</h2>
                         <p>{tool.description}</p>
                         <div className="card-actions justify-end">
-                            <p>Minimum Order: {tool.minimum_order_quantity}</p>
-                            <p>Order: {tool.available_quantity}</p>
+                            <p className='text-primary font-bold'>Minimum Order Quantity: {tool.minimum_order_quantity}</p>
+                            <p className='text-primary font-bold'>Available Order Quantity: {tool.available_quantity}</p>
                         </div>
                     </div>
                 </div>
@@ -100,7 +99,7 @@ const Purchase = () => {
                         <br />
                         {quantityMessage?.message && <p>{quantityMessage.message}</p>}
                         <br />
-                        <input className='input input-bordered w-full btn btn-outline' type="submit" name="" value='Buy Now' required />
+                        <input className='input input-bordered w-full btn btn-primary' type="submit" name="" value='Buy Now' required />
                     </form>
                 </div>
             </div>
