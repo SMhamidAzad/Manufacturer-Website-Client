@@ -1,5 +1,6 @@
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import Swal from 'sweetalert2';
 import auth from '../../../firebase.init';
 
 const AddReview = () => {
@@ -20,8 +21,13 @@ const AddReview = () => {
         })
             .then(res => res.json())
             .then(data => {
-                alert('Thank you so much for your review');
-                console.log(data);
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Thank you so much for your review',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
             })
     }
     return (

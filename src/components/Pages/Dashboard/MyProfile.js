@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import Swal from 'sweetalert2';
 import auth from '../../../firebase.init';
 import Loading from '../../Shared/Loading';
 
@@ -43,8 +44,13 @@ const MyProfile = () => {
     })
       .then(res => res.json())
       .then(data => {
-        alert('You Profile successfully Updated');
-        console.log(data);
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Your profile successfully updated!',
+          showConfirmButton: false,
+          timer: 1500
+        })
       })
   }
   return (
@@ -78,7 +84,7 @@ const MyProfile = () => {
 
               <input className='input input-bordered w-full mb-1' type="text" name="linkedin" id="" placeholder='Linkedin Account' />
 
-              <input className='input input-bordered max-w-xs w-full mb-1 btn' type="Submit" value='Update' />
+              <input className='input input-bordered max-w-xs w-full mb-1 btn btn-primary' type="Submit" value='Update' />
             </form>
           </div>
         </div>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import useManageOrder from '../../../hooks/useManageOrder';
 import ManageOrdersRow from './ManageOrdersRow';
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import { toast } from 'react-toastify';
+import Swal from 'sweetalert2';
 
 const MakeAdminRow = ({ user, index, refetch }) => {
     const { _id,email, role } = user;
@@ -16,18 +17,32 @@ const MakeAdminRow = ({ user, index, refetch }) => {
     }
     
     const handleDeleteBtn = id => {
-        const proceed = window.confirm('Are you sure you want to delete?');
+        const proceed =Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              Swal.fire(
+                'Deleted!',
+                'This user has been deleted.',
+                'success'
+              )
+            }
+          })
         if (proceed) {
             console.log('deleting parts with id, ', id);
-            const url = `http://localhost:5000/user/${id}`;
+            const url = `https://mighty-earth-01337.herokuapp.com/user/${id}`;
             fetch(url, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
                 .then(data => {
                     if (data.deletedCount > 0) {
-
-                        console.log('deleted user');
                         refetch()
                     }
                 })

@@ -1,4 +1,5 @@
 import React from 'react';
+import Swal from 'sweetalert2';
 import useParts from '../../../hooks/useParts';
 
 const ManageProductsRow = ({ part, index }) => {
@@ -6,10 +7,26 @@ const ManageProductsRow = ({ part, index }) => {
     const [parts, setParts] = useParts()
 
     const handleDeleteBtn = id => {
-        const proceed = window.confirm('Are you sure you want to delete?');
+        const proceed =Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              Swal.fire(
+                'Deleted!',
+                'This product has been deleted.',
+                'success'
+              )
+            }
+          })
         if (proceed) {
             console.log('deleting parts with id, ', id);
-            const url = `http://localhost:5000/tools/${id}`;
+            const url = `https://mighty-earth-01337.herokuapp.com/tools/${id}`;
             fetch(url, {
                 method: 'DELETE'
             })

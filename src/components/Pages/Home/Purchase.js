@@ -2,12 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import Swal from 'sweetalert2';
 import auth from '../../../firebase.init';
 
 const Purchase = () => {
     const { id } = useParams();
     const [tool, setTool] = useState([]);
-    
+
     const [quantityMessage, setQuantityMessage] = useState({
         message: ""
     })
@@ -54,10 +55,14 @@ const Purchase = () => {
         })
             .then(res => res.json())
             .then(data => {
-                toast.success("You order this item successfully",{
-                    position: 'top-center'
+
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: `You order ${tool.name} successfully`,
+                    showConfirmButton: false,
+                    timer: 1500
                 })
-                console.log(data);
             })
     }
     return (
@@ -77,7 +82,7 @@ const Purchase = () => {
             </div>
             <div className='flex justify-center my-10'>
                 <div className='w-1/4'>
-                    <h3 className='text-2xl mb-4'>Purchase Now</h3>
+                    <h3 className='text-2xl mb-4 font-medium'>Purchase Now</h3>
                     <form onSubmit={handleBuyNow}>
                         <input value={user?.email} className='input input-bordered w-full' type="email" name="email" required readOnly disabled />
                         <br />

@@ -20,7 +20,7 @@ const MyOrder = () => {
     return (
         <div>
             <h2 className='text-2xl font-bold pt-3 pb-1'><u>Total My Order: {myOrders.length}</u></h2>
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto mb-4">
                 <table className="table table-zebra w-full">
                     <thead>
                         <tr>
