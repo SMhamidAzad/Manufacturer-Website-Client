@@ -6,8 +6,14 @@ import auth from '../../../firebase.init';
 import useToken from '../../../hooks/useToken';
 import Loading from '../../Shared/Loading';
 import SocialLogin from './SocialLogin';
+import ReCAPTCHA from "react-google-recaptcha";
 
 const Login = () => {
+    const [verified, setVerified] = useState(false);
+    // recaptha function
+    function onChange(value) {
+        setVerified(true)
+    }
     const [
         signInWithEmailAndPassword,
         user,
@@ -92,12 +98,18 @@ const Login = () => {
                     <br />
                     {errors?.emailError && <p className='text-danger'>❌ {errors.emailError}</p>}
                     <br />
-                    <input className='input input-bordered w-full' onChange={handlePasswordField} type="password" name="password" id="" placeholder='Password' />
+                    <input className='input input-bordered w-full mb-6' onChange={handlePasswordField} type="password" name="password" id="" placeholder='Password' />
                     <br />
                     {errors?.passwordError && <p className='text-danger'>❌{errors.passwordError}</p>}
 
+                    <div className='flex justify-center'>
+                    <ReCAPTCHA
+                        sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+                        onChange={onChange}
+                    />
+                    </div>
                     <div className='d-flex justify-content-between mt-6'>
-                        <input className='btn btn-primary btn-md w-full' type="submit" value="Login" />
+                        <input disabled={!verified} className='btn btn-primary btn-md w-full' type="submit" value="Login" />
                     </div>
                     <p>New in our website? <Link className='btn-link' to='/signup'>Sign up</Link></p>
                 </form>
