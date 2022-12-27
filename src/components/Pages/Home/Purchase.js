@@ -14,20 +14,20 @@ const Purchase = () => {
     })
     const [user, loading, error] = useAuthState(auth);
     useEffect(() => {
-        fetch(`https://mighty-earth-01337.herokuapp.com/tools/${id}`)
+        fetch(`https://manufacturer-website-server.onrender.com/tools/${id}`)
             .then(res => res.json())
             .then(data => setTool(data))
     }, [])
-   
+
     useEffect(() => {
         if (user) {
             console.log(user);
         }
     }, [user])
-    if(loading){
+    if (loading) {
         return <Loading></Loading>
     }
-   
+
     const handleQuantityField = e => {
         const inputQuantity = parseInt((e.target.value));
 
@@ -52,7 +52,7 @@ const Purchase = () => {
             product: tool.name,
             quantity: e.target.quantity.value
         }
-        fetch('https://mighty-earth-01337.herokuapp.com/orders', {
+        fetch('https://manufacturer-website-server.onrender.com/orders', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -110,11 +110,11 @@ const Purchase = () => {
                         <br />
                         {quantityMessage?.message && <p>{quantityMessage.message}</p>}
                         <br />
-                        <input  className='input input-bordered w-full btn btn-primary' type="submit" name="" value='Buy Now' required />
+                        <input className='input input-bordered w-full btn btn-primary' type="submit" name="" value='Buy Now' required />
                     </form>
                 </div>
             </div>
-        </div> 
+        </div>
     );
 };
 

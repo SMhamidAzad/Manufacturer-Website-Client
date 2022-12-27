@@ -6,7 +6,7 @@ const useToken = user => {
         const email = user?.user?.email;
         const presentUser = { email: email };
         if (email) {
-            const url = `https://mighty-earth-01337.herokuapp.com/user/${email}`;
+            const url = `https://manufacturer-website-server.onrender.com/user/${email}`;
             fetch(url, {
                 method: 'PUT',
                 headers: {

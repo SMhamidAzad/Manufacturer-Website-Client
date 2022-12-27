@@ -3,11 +3,11 @@ import Swal from 'sweetalert2';
 import useManageOrder from '../../../hooks/useManageOrder';
 
 const MyOrderRow = ({ index, myOrder }) => {
-    const { _id,product, email, phone, quantity, address } = myOrder;
-    const [orders,setOrders] = useManageOrder()
+    const { _id, product, email, phone, quantity, address } = myOrder;
+    const [orders, setOrders] = useManageOrder()
 
     const handleDeleteBtn = id => {
-        const proceed =Swal.fire({
+        const proceed = Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
             icon: 'warning',
@@ -15,18 +15,18 @@ const MyOrderRow = ({ index, myOrder }) => {
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
             confirmButtonText: 'Yes, delete it!'
-          }).then((result) => {
+        }).then((result) => {
             if (result.isConfirmed) {
-              Swal.fire(
-                'Deleted!',
-                'Your order has been deleted.',
-                'success'
-              )
+                Swal.fire(
+                    'Deleted!',
+                    'Your order has been deleted.',
+                    'success'
+                )
             }
-          })
+        })
         if (proceed) {
             console.log('deleting my order with id, ', id);
-            const url = `https://mighty-earth-01337.herokuapp.com/${id}`;
+            const url = `https://manufacturer-website-server.onrender.com/${id}`;
             fetch(url, {
                 method: 'DELETE'
             })
@@ -49,7 +49,7 @@ const MyOrderRow = ({ index, myOrder }) => {
             <td>{phone}</td>
             <td>{quantity}</td>
             <td>{address}</td>
-            <td><button  onClick={() => handleDeleteBtn(_id)} className="btn btn-xs">Cancel</button></td>
+            <td><button onClick={() => handleDeleteBtn(_id)} className="btn btn-xs">Cancel</button></td>
         </tr>
     );
 };

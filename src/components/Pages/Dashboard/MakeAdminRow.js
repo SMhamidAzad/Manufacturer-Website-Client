@@ -3,9 +3,9 @@ import { toast } from 'react-toastify';
 import Swal from 'sweetalert2';
 
 const MakeAdminRow = ({ user, index, refetch }) => {
-    const { _id,email, role } = user;
+    const { _id, email, role } = user;
     const handleMakeAdmin = () => {
-        fetch(`https://mighty-earth-01337.herokuapp.com/user/admin/${email}`, {
+        fetch(`https://manufacturer-website-server.onrender.com/user/admin/${email}`, {
             method: 'PUT'
         })
             .then(res => res.json())
@@ -15,9 +15,9 @@ const MakeAdminRow = ({ user, index, refetch }) => {
                 toast.success('Made an Admin Successfully')
             })
     }
-    
+
     const handleDeleteBtn = id => {
-        const proceed =Swal.fire({
+        const proceed = Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
             icon: 'warning',
@@ -25,18 +25,18 @@ const MakeAdminRow = ({ user, index, refetch }) => {
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
             confirmButtonText: 'Yes, delete it!'
-          }).then((result) => {
+        }).then((result) => {
             if (result.isConfirmed) {
-              Swal.fire(
-                'Deleted!',
-                'This user has been deleted.',
-                'success'
-              )
+                Swal.fire(
+                    'Deleted!',
+                    'This user has been deleted.',
+                    'success'
+                )
             }
-          })
+        })
         if (proceed) {
             console.log('deleting parts with id, ', id);
-            const url = `https://mighty-earth-01337.herokuapp.com/user/${id}`;
+            const url = `https://manufacturer-website-server.onrender.com/user/${id}`;
             fetch(url, {
                 method: 'DELETE'
             })

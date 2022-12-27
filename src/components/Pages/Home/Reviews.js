@@ -7,7 +7,7 @@ import Review from './Review';
 const Reviews = () => {
     const [user] = useAuthState(auth);
     const [reviews, setReviews] = useState([])
-    const url = `https://mighty-earth-01337.herokuapp.com/review`;
+    const url = `https://manufacturer-website-server.onrender.com/review`;
     useEffect(() => {
         const allReview = async () => {
             const { data } = await axios.get(url, {

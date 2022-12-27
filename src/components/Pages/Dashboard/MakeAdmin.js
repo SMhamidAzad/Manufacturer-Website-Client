@@ -4,7 +4,7 @@ import Loading from '../../Shared/Loading';
 import MakeAdminRow from './MakeAdminRow';
 
 const MakeAdmin = () => {
-  const { data: users, isLoading, refetch } = useQuery('users', () => fetch('https://mighty-earth-01337.herokuapp.com/user').then(res => res.json()))
+  const { data: users, isLoading, refetch } = useQuery('users', () => fetch('https://manufacturer-website-server.onrender.com/user').then(res => res.json()))
   if (isLoading) {
     return <Loading></Loading>
   }
